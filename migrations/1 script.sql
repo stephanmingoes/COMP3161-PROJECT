@@ -8,6 +8,8 @@ USE course_management;
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT,
     username VARCHAR(30),
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
     password VARCHAR(40),
     role ENUM("student", "admin", "lecturer"),
     PRIMARY KEY (user_id)
