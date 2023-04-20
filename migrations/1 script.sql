@@ -17,7 +17,7 @@ CREATE TABLE users (
 
 CREATE TABLE courses (
     course_id INT AUTO_INCREMENT,
-    course_code VARCHAR(7) UNIQUE,
+    course_code VARCHAR(10) UNIQUE,
     course_name VARCHAR(50),
     course_description VARCHAR(255),
     PRIMARY KEY (course_id) 
