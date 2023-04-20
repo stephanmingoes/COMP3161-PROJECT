@@ -10,7 +10,7 @@ CREATE TABLE users (
     username VARCHAR(30),
     first_name VARCHAR(50),
     last_name VARCHAR(50),
-    password VARCHAR(40),
+    password TEXT,
     role ENUM("student", "admin", "lecturer"),
     PRIMARY KEY (user_id)
 );
