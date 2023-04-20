@@ -2,7 +2,7 @@ import { coursesData } from './data';
 
 export async function seedCourses(connection: any) {
   try {
-    console.log(`🌱 Seeding courses into the database 🌱`);
+    console.log(`\n\n🌱 Seeding courses into the database 🌱\n\n`);
 
     for (const courseCode of Object.keys(coursesData)) {
       //Get course name and generate description

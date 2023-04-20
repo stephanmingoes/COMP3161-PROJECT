@@ -37,9 +37,7 @@ CREATE TABLE lecturer_courses (
     lecturer_id INT,
     PRIMARY KEY (course_id, lecturer_id),
     FOREIGN KEY (course_id) REFERENCES courses(course_id),
-    FOREIGN KEY (lecturer_id) REFERENCES users(user_id),
-    -- only one lecturer can be assigned to a course
-    UNIQUE (course_id)
+    FOREIGN KEY (lecturer_id) REFERENCES users(user_id)
 );
 
 
