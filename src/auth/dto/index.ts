@@ -15,6 +15,14 @@ export class CreateUserDto {
   @Length(1, 40)
   password: string;
 
+  @IsString()
+  @Length(1, 40)
+  firstName: string;
+
+  @IsString()
+  @Length(1, 40)
+  lastName: string;
+
   @IsEnum(UserRole)
   role: UserRole;
 }

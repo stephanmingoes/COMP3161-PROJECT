@@ -9,6 +9,9 @@ import { AssignmentModule } from './assignment/assignment.module';
 import { ReportModule } from './report/report.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseModule } from './database/database.module';
+import { config } from 'dotenv';
+config();
+
 @Module({
   imports: [
     AuthModule,
@@ -24,7 +27,7 @@ import { DatabaseModule } from './database/database.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '@tomic2001',
+      password: process.env.DATABASE_PASSWORD ?? '@tomic2001',
       database: 'course_management',
     }),
     DatabaseModule,

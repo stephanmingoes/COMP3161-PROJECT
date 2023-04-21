@@ -1,6 +1,8 @@
 const mysql = require('mysql2/promise');
 import { seedCourses } from './seedCourses';
 import { seedUsers } from './seedUsers';
+import { config } from 'dotenv';
+config();
 
 export async function seedData() {
   try {
@@ -9,7 +11,7 @@ export async function seedData() {
       host: 'localhost',
       user: 'root',
       database: 'course_management',
-      password: process.env.DATABASE_PASSWORD ?? 'password!23',
+      password: process.env.DATABASE_PASSWORD ?? '@tomic2001',
     });
     await seedCourses(connection);
   	await seedUsers(connection);
