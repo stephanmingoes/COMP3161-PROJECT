@@ -4,7 +4,7 @@ import { seedUsers } from './seedUsers';
 
 export async function seedData() {
   try {
-    console.log(`⏳ Seeding started ⏳\n\n`);
+    console.log(`⏳ Seeding started ⏳\n`);
     const connection = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
