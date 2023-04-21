@@ -14,7 +14,7 @@ export async function seedData() {
     await seedCourses(connection);
   	await seedUsers(connection);
     
-    return console.log(`✅ All data have been seeded ✅`);
+    return console.log(`\n\n✅ All data have been seeded ✅`);
   } catch (e) {
     return console.log(`❌ Error while seeding tables... ❌\n\n${e}`);
   }
