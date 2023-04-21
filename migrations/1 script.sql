@@ -8,6 +8,8 @@ USE course_management;
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT,
     username VARCHAR(30),
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
     password TEXT,
     role ENUM("student", "admin", "lecturer"),
     PRIMARY KEY (user_id)
@@ -15,7 +17,7 @@ CREATE TABLE users (
 
 CREATE TABLE courses (
     course_id INT AUTO_INCREMENT,
-    course_code VARCHAR(7) UNIQUE,
+    course_code VARCHAR(10) UNIQUE,
     course_name VARCHAR(50),
     course_description VARCHAR(255),
     PRIMARY KEY (course_id) 
@@ -35,9 +37,7 @@ CREATE TABLE lecturer_courses (
     lecturer_id INT,
     PRIMARY KEY (course_id, lecturer_id),
     FOREIGN KEY (course_id) REFERENCES courses(course_id),
-    FOREIGN KEY (lecturer_id) REFERENCES users(user_id),
-    -- only one lecturer can be assigned to a course
-    UNIQUE (course_id)
+    FOREIGN KEY (lecturer_id) REFERENCES users(user_id)
 );
 
 

@@ -7,13 +7,21 @@ import { Connection } from 'typeorm';
 export class DatabaseService {
   constructor(@InjectConnection() private readonly connection: Connection) {}
 
-  async signUpUser(user: { username: string; password: string; role: string }) {
+  async signUpUser(user: {
+    username: string;
+    password: string;
+    role: string;
+    lastName: string;
+    firstName: string;
+  }) {
     const query = `
-    INSERT INTO users (username, password, role)
-    VALUES (?, ?, ?)
+    INSERT INTO users (username, first_name, last_name, password, role)
+    VALUES (?, ?, ?, ?, ?)
   `;
     return await this.connection.query(query, [
       user.username,
+      user.firstName,
+      user.lastName,
       user.password,
       user.role,
     ]);
