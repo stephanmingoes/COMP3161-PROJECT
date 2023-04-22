@@ -151,7 +151,7 @@ FROM student_courses
 GROUP BY student_id
 HAVING num_courses >= 5;
 
-CREATE VIEW students_with_5_or_more_students AS 
+CREATE VIEW students_with_5_or_more_courses AS 
 SELECT s.*
 FROM users s 
 JOIN student_ids_with_5_or_more_courses ss ON s.user_id = ss.student_id AND s.role = 'student';
