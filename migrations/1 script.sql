@@ -26,6 +26,7 @@ CREATE TABLE courses (
 CREATE TABLE student_courses (
     course_id INT,
     student_id INT,
+    grade FLOAT,
     PRIMARY KEY (course_id, student_id),
     FOREIGN KEY (course_id) REFERENCES courses(course_id),
     FOREIGN KEY (student_id) REFERENCES users(user_id)

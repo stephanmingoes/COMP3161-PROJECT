@@ -88,4 +88,23 @@ export class ReportController {
       throw new HttpException(e, HttpStatus.BAD_REQUEST);
     }
   }
+
+  @Get('/students/top-10-highest-averages')
+  async getHighestAverages() {
+    try {
+      const query = `
+				SELECT users.first_name, users.last_name, AVG(student_courses.grade) as 'Average'  
+				FROM student_courses
+				JOIN users ON users.user_id=student_courses.student_id
+				GROUP BY student_courses.student_id
+				ORDER BY AVG(student_courses.grade) DESC
+				LIMIT 10;
+			`;
+      const data = await this.connection.query(query);
+      return data;
+    } catch (e) {
+      console.error(`ERROR getHighestAverages() ${e}`);
+      throw new HttpException(e, HttpStatus.BAD_REQUEST);
+    }
+  }
 }
