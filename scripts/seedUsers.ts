@@ -12,7 +12,7 @@ export async function seedUsers(connection: any) {
     const roles = ['student', 'admin', 'lecturer'];
 
     let usersInsertQuery = `INSERT INTO users (username, first_name, last_name, password, role) VALUES `;
-    let studentInsertQuery = `INSERT INTO student_courses (course_id, student_id) VALUES `;
+    let studentInsertQuery = `INSERT INTO student_courses (course_id, student_id, grade) VALUES `;
     let lecturerInsertQuery = `INSERT INTO lecturer_courses (course_id, lecturer_id) VALUES `;
 
     const userInsertData = [];
@@ -51,10 +51,12 @@ export async function seedUsers(connection: any) {
       //Logic to insert values into the lecturer_courses and student_courses tables
       while (x < courseIds.length) {
         const courseId = parseInt(courseIds[x]);
-        if (role == 'student' || role == 'admin') {
-          studentInsertQuery += `(?, ?),`;
-          studentInsertData.push(...[courseId, i + 1]);
-        } else {
+        if (role == 'student') {
+          const grade = Math.floor(Math.random() * 70) + 30;
+
+          studentInsertQuery += `(?, ?, ?),`;
+          studentInsertData.push(...[courseId, i + 1, grade]);
+        } else if (role == 'lecturer') {
           lecturerInsertQuery += `(?, ?),`;
           lecturerInsertData.push(...[courseId, i + 1]);
         }
