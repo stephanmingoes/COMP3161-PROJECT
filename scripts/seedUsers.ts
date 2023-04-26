@@ -1,4 +1,5 @@
 import { uniqueNamesGenerator, Config, names } from 'unique-names-generator';
+import * as fs from 'fs';
 
 const config: Config = {
   dictionaries: [names],
@@ -63,11 +64,13 @@ export async function seedUsers(connection: any) {
         courseTrack[courseId.toString()] += 1;
 
         if (courseTrack[maxNumber] == 10) {
-          //refresh hashmap with next 5 vals, update maxNumber
+          //refresh hashmap with next 3-5 vals, update maxNumber
           courseTrack = {};
-          if (maxNumber == 200) maxNumber = 0;
-          for (let j = 0; j < 5; j++) {
-            maxNumber++;
+          const coursesNum = Math.floor(Math.random() * 3) + 3;
+
+          for (let j = 0; j < coursesNum; j++) {
+            maxNumber = (maxNumber + 1) % 201;
+            if (maxNumber == 0) maxNumber++;
             courseTrack[maxNumber] = 0;
           }
           courseIds = Object.keys(courseTrack);
@@ -87,6 +90,24 @@ export async function seedUsers(connection: any) {
 
     await connection.query(studentInsertQuery, studentInsertData);
     await connection.query(lecturerInsertQuery, lecturerInsertData);
+
+    // Append SQL to file
+    const filePath = '././migrations/1 script.sql';
+
+    fs.appendFileSync(
+      filePath,
+      `\n${connection.format(usersInsertQuery, userInsertData)}\n`,
+    );
+
+    fs.appendFileSync(
+      filePath,
+      `\n${connection.format(studentInsertQuery, studentInsertData)}\n`,
+    );
+
+    fs.appendFileSync(
+      filePath,
+      `\n${connection.format(lecturerInsertQuery, lecturerInsertData)}\n`,
+    );
 
     return console.log(`\n\n✅ ${userCount} users seeded into the database ✅`);
   } catch (e) {
