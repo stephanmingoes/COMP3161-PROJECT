@@ -26,7 +26,7 @@ export async function seedLecturers(connection: any) {
       5: 0,
     };
     let maxNumber = 5;
-    for (let i = 0; i < lecturerCount; i++) {
+    for (let i = 100000; i < 100000+lecturerCount; i++) {
       //Generate first and last name
       const firstName = uniqueNamesGenerator(config);
       const lastName = uniqueNamesGenerator(config);
@@ -39,8 +39,7 @@ export async function seedLecturers(connection: any) {
       //Get a random role
       const role = 'lecturer';
 
-      lecturerInsertQuery +=
-        i !== lecturerCount - 1 ? `(?, ?, ?, ?, ?),` : `(?, ?, ?, ?, ?);`;
+      lecturerInsertQuery += `(?, ?, ?, ?, ?),`;
       lecturerInsertData.push(
         ...[username, firstName, lastName, password, role],
       );
@@ -79,6 +78,8 @@ export async function seedLecturers(connection: any) {
     }
 
     //execute insert statements
+    lecturerInsertQuery = lecturerInsertQuery.slice(0, -1).concat(';');
+
     await connection.query(lecturerInsertQuery, lecturerInsertData);
 
     lecturerEnrolQuery = lecturerEnrolQuery.slice(0, -1).concat(';');
