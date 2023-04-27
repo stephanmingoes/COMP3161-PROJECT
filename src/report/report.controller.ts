@@ -20,11 +20,7 @@ export class ReportController {
   async getCoursesWithManyStudents() {
     try {
       const query = `
-				SELECT courses.course_code, courses.course_name, COUNT(*) as 'No. Of Students'  
-				FROM student_courses
-				LEFT JOIN courses ON courses.course_id=student_courses.course_id
-				GROUP BY student_courses.course_id
-				HAVING COUNT(*) >= 50;
+				SELECT * FROM courses_with_50_or_more_students;
 			`;
       const data = await this.connection.query(query);
       return data;
@@ -38,11 +34,7 @@ export class ReportController {
   async getStudentWithManyCourses() {
     try {
       const query = `
-				SELECT users.first_name, users.last_name, COUNT(*) as 'No. Of Courses'  
-				FROM student_courses
-				LEFT JOIN users ON student_courses.student_id=users.user_id
-				GROUP BY student_courses.student_id
-				HAVING COUNT(*) >= 5;
+				SELECT * FROM students_with_5_or_more_courses;
 			`;
       const data = await this.connection.query(query);
       return data;
@@ -56,11 +48,7 @@ export class ReportController {
   async getLecturersWithManyCourses() {
     try {
       const query = `
-				SELECT users.first_name, users.last_name, COUNT(*) as 'No. Of Courses'  
-				FROM lecturer_courses
-				LEFT JOIN users ON lecturer_courses.lecturer_id=users.user_id
-				GROUP BY lecturer_courses.lecturer_id
-				HAVING COUNT(*) >= 3;
+				SELECT * FROM lecturers_with_3_or_more_courses;
 			`;
       const data = await this.connection.query(query);
       return data;
@@ -74,12 +62,7 @@ export class ReportController {
   async getMostCourseEnrollments() {
     try {
       const query = `
-				SELECT courses.course_code, courses.course_name, COUNT(*) as 'No. Of Students'  
-				FROM student_courses
-				JOIN courses ON student_courses.course_id=courses.course_id
-				GROUP BY student_courses.course_id
-				ORDER BY COUNT(*) DESC
-				LIMIT 10;
+				SELECT * FROM top_10_enrolled_courses;
 			`;
       const data = await this.connection.query(query);
       return data;
@@ -93,12 +76,7 @@ export class ReportController {
   async getHighestAverages() {
     try {
       const query = `
-				SELECT users.first_name, users.last_name, AVG(student_courses.grade) as 'Average'  
-				FROM student_courses
-				JOIN users ON users.user_id=student_courses.student_id
-				GROUP BY student_courses.student_id
-				ORDER BY AVG(student_courses.grade) DESC
-				LIMIT 10;
+				SELECT * FROM top_10_students_with_highest_averages;
 			`;
       const data = await this.connection.query(query);
       return data;
