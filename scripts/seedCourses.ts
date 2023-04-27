@@ -26,11 +26,11 @@ export async function seedCourses(connection: any) {
     await connection.query(coursesInsertQuery, coursesInsertData);
 
     // Append SQL to file
-    const filePath = '././migrations/1 script.sql';
+    const filePath = '././migrations/coursesData.sql';
 
-    fs.appendFileSync(
+    fs.writeFileSync(
       filePath,
-      `\n${connection.format(coursesInsertQuery, coursesInsertData)}\n`,
+      `/* Courses Insert Data */\n${connection.format(coursesInsertQuery, coursesInsertData)}\n`,
     );
 
     return console.log(
