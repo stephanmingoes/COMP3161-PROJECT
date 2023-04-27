@@ -4,11 +4,14 @@ import {
   HttpException,
   HttpStatus,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { ReportService } from './report.service';
 import { InjectConnection } from '@nestjs/typeorm';
 import { Connection } from 'mysql2';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+UseGuards(AuthGuard);
 @Controller('report')
 export class ReportController {
   constructor(

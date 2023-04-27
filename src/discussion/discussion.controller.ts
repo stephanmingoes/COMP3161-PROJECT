@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { InjectConnection } from '@nestjs/typeorm';
 import { Connection } from 'mysql2';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+UseGuards(AuthGuard);
 @Controller('discussion')
 export class DiscussionController {
   constructor(@InjectConnection() private readonly connection: Connection) {}
