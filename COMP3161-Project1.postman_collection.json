@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8064f945-26ad-4108-a64d-85384de93583",
+		"_postman_id": "c1ff3043-8c5d-4ad5-894a-8378af8a394f",
 		"name": "COMP3161-Project1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "15522555"
+		"_exporter_id": "26444387"
 	},
 	"item": [
 		{
@@ -479,6 +479,82 @@
 					"path": [
 						"discussion",
 						"reply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Courses with 50 or more students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/report/courses/50-or-more-students",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"report",
+						"courses",
+						"50-or-more-students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Students enrolled in 5 or more courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/report/students/5-or-more-courses",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"report",
+						"students",
+						"5-or-more-courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lecturers that teach 3 or more courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/report/lecturers/3-or-more-courses",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"report",
+						"lecturers",
+						"3-or-more-courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Top 10 most enrolled courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/report/courses/top-10-enrollment",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"report",
+						"courses",
+						"top-10-enrollment"
 					]
 				}
 			},
