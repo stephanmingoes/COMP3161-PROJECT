@@ -76,12 +76,7 @@ export class ReportController {
   async getHighestAverages() {
     try {
       const query = `
-				SELECT users.first_name, users.last_name, AVG(student_courses.grade) as 'Average'  
-				FROM student_courses
-				JOIN users ON users.user_id=student_courses.student_id
-				GROUP BY student_courses.student_id
-				ORDER BY AVG(student_courses.grade) DESC
-				LIMIT 10;
+				SELECT * FROM top_10_students_with_highest_averages;
 			`;
       const data = await this.connection.query(query);
       return data;
