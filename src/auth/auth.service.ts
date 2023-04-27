@@ -5,10 +5,14 @@ import {
 } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { CreateUserDto, SignInUserDto } from './dto';
+import { JwtService } from '@nestjs/jwt';
 import { hash, verify } from 'argon2';
 @Injectable()
 export class AuthService {
-  constructor(private readonly db: DatabaseService) {}
+  constructor(
+    private readonly db: DatabaseService,
+    private jwtService: JwtService,
+  ) {}
 
   async signup(user: CreateUserDto) {
     const hashedPassword = await hash(user.password);
@@ -26,6 +30,9 @@ export class AuthService {
     const isPasswordValid = await verify(fetchedUser.password, user.password);
     if (!isPasswordValid) throw new UnauthorizedException('Incorrect Password');
     delete fetchedUser.password;
-    return fetchedUser;
+
+    return {
+      access_token: await this.jwtService.signAsync(fetchedUser),
+    };
   }
 }

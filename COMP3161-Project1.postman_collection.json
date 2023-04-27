@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "8064f945-26ad-4108-a64d-85384de93583",
+		"name": "COMP3161-Project1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15522555"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"stephanadmin\",\r\n    \"password\": \"password\",\r\n    \"role\": \"admin\", \r\n    \"firstName\": \"Stephan\",\r\n    \"lastName\": \"Mingoes\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/auth/signup",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"stephanadmin\",\r\n    \"password\": \"password\"\r\n\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/auth/signin",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/course",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"course_code\": \"CS101\",\r\n  \"course_name\": \"Introduction to Computer Science\",\r\n  \"course_description \": \"This course provides an introduction to the fundamental concepts of computer science.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/course",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve courses for a particular student",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/course/student/10",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"course",
+						"student",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve courses taught by a particular lecturer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/course/lecturer/16",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"course",
+						"lecturer",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Student for Course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/course/23/10/student_register",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"course",
+						"23",
+						"10",
+						"student_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Lecturer for Course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/course/23/16/lecturer_register",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"course",
+						"23",
+						"16",
+						"lecturer_register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Members For Course",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/course/23/members",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"course",
+						"23",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Course Content",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"section_id\": 1, \r\n    \"course_content\": \"This is a test content\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/content",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all the course content for a particular course",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/content/1",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"content",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit assignment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"submission_content\": \"Submission content for student with id 3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/assignment/1/1/submit",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"assignment",
+						"1",
+						"1",
+						"submit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit a grade for a particular student for that assignment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"grade\": 100, \r\n    \"submission_id\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/assignment/submit-grade-for-student",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"assignment",
+						"submit-grade-for-student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Calendar Events for a course",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/calendar/event/1",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"calendar",
+						"event",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve calendar events for a particular date for a particular student",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/calendar/event/2023-04-26 20:48:02/student/2",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"calendar",
+						"event",
+						"2023-04-26 20:48:02",
+						"student",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a calendar event",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"course_id\": 1,\r\n  \"created_by\": 2,\r\n  \"event_title\": \"Midterm Exam\",\r\n  \"event_description\": \"The midterm exam for the course\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/calendar/event",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"calendar",
+						"event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all the forums for a particular course",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/forum/1",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"forum",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a forum for a particular course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"course_id\": 123,\r\n  \"created_by\": 456,\r\n  \"forum_title\": \"Example Forum\",\r\n  \"forum_description\": \"This is an example forum\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/forum",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"forum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all the discussion threads for a particular forum",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{home}}/discussion/thread/1",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"discussion",
+						"thread",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new discussion thread to a forum",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"forum_id\": 1,\r\n  \"parent_thread_id\": null,\r\n  \"created_by\": 1,\r\n  \"thread_content\": \"This is a new discussion thread.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/discussion/thread",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"discussion",
+						"thread"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a reply to a thread",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"forum_id\": 1,\r\n  \"parent_thread_id\": 1,\r\n  \"created_by\": 2,\r\n  \"thread_content\": \"I agree with the previous comment.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{home}}/discussion/reply",
+					"host": [
+						"{{home}}"
+					],
+					"path": [
+						"discussion",
+						"reply"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMDAwMDIsInVzZXJuYW1lIjoic3RlcGhhbmFkbWluIiwiZmlyc3RfbmFtZSI6IlN0ZXBoYW4iLCJsYXN0X25hbWUiOiJNaW5nb2VzIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgyNTQ4MjYzLCJleHAiOjE2ODI3MjEwNjN9.IkXyIgiF7GFZwkUQhLZSjBWAVg4fZmmfhFMHWiJTals",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "home",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
